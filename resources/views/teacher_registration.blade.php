@@ -15,7 +15,7 @@
 @section('content')
 <section class="bg-theme-1 section-head py-0 py-sm-5">
     <div class="container py-5 text-center text-white">
-        <h2 class="text-white mb-0">Welcome To Shiksha</h2>
+        <h2 class="text-white mb-0">Welcome To SAR</h2>
         <p class="pb-0">Fill this form so that we can start on-boarding process with you.</p>
     </div>
 </section>
@@ -182,7 +182,7 @@
                                         </select>
                                     </div>
                                 </div>
-                              
+
 
                                 <div class="col-md-3 my-3 col-12">
                                     <label class="form-label mb-0 mt-1">Address</label>
@@ -192,7 +192,7 @@
                                     <div class="invalid-feedback" id="address_error">
                                     </div>
                                 </div>
-                              
+
                             </div>
                             <div class="invalid-feedback" id="location_error">
                             </div>
@@ -263,7 +263,7 @@
                                     <div class="invalid-feedback" id="pan_number_error">
                                     </div>
                                 </div>
-                              
+
                             </div>
 
 

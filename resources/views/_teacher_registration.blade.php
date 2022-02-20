@@ -151,7 +151,7 @@
     </style>
     <section class="bg-theme-1 section-head py-0 py-sm-5">
         <div class="container py-5 text-center text-white">
-            <h2 class="text-white mb-0">Welcome To Shiksha</h2>
+            <h2 class="text-white mb-0">Welcome To SAR</h2>
             <p class="pb-0">Fill this form so that we can start on-boarding process with you.</p>
         </div>
     </section>
@@ -597,7 +597,7 @@
             // '<div class="col-11 " >'+
             // '<input required class="form-control mt-2" id="choices-Specilization" type="text"  placeholder="Enter something" /></div>
             // <div class="col-md-1 mt-2" >'+'<img id="removeqs" src="{{ asset('assets/png/24x24/delete.png') }}"></div></div>';
-            // $('#room_fileds').append(dummy);   
+            // $('#room_fileds').append(dummy);
         }
     </script>
 

@@ -91,7 +91,7 @@
 <section class="py-5 pt-md-11 pb-md-12 bg-white-ice text-center">
     <div class="container">
         <div class="mb-md-8 mb-4">
-            <h1 class="mb-1 text-theme-1">Why Study With Shiksha</h1>
+            <h1 class="mb-1 text-theme-1">Why Study With SAR</h1>
             <p class="font-size-lg mb-0 text-capitalize">Discover your perfect program in our courses.</p>
         </div>
 
