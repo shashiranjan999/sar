@@ -28,4 +28,7 @@ class ProfileController extends Controller
         ->get();
         return view('profile',compact('teacherdetail','teacherexperience','teacherspecialization','teacherqualification'));
     }
+    public function updateprofile(){
+        return view('updateprofile');
+    }
 }
