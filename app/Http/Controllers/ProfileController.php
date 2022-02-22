@@ -16,15 +16,16 @@ class ProfileController extends Controller
     }
     public function getprofile(){
         $id=Auth::user()->id;
-        $teacherdetail = Teacherdetail::find($id);
+        $teacherdetail = Teacherdetail::where('user_id' ,$id)->first();
+        $teacher_id = $teacherdetail->id;
         $teacherexperience = Teacherexperience::select("*")
-        ->where("teacher_id", "=", $id)
+        ->where("teacher_id", "=", $teacher_id)
         ->get();
         $teacherspecialization = Teacherspecialization::select("*")
-        ->where("teacher_id", "=", $id)
+        ->where("teacher_id", "=", $teacher_id)
         ->get();
         $teacherqualification = Teacherqualification::select("*")
-        ->where("teacher_id", "=", $id)
+        ->where("teacher_id", "=", $teacher_id)
         ->get();
         return view('profile',compact('teacherdetail','teacherexperience','teacherspecialization','teacherqualification'));
     }

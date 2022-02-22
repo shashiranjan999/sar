@@ -56,22 +56,22 @@ $('.next-btn').on('click', function (e) {
         }
     }
 
-    if (activeDiv == 2) {
-        if (validateInputs([
-            'bank_name',
-            'bank_number',
-            'bank_ifsc',
-            'aadhar_number',
-            'pan_number',
-            // 'bank_account_image',
-            // 'aadhar_front_image',
-            // 'aadhar_back_image',
-            // 'pancard_image'
-        ])) {
-            handleNextButton($(this));
-            return;
-        }
-    }
+    // if (activeDiv == 2) {
+    //     if (validateInputs([
+    //         'bank_name',
+    //         'bank_number',
+    //         'bank_ifsc',
+    //         'aadhar_number',
+    //         'pan_number',
+    //         'bank_account_image',
+    //         'aadhar_front_image',
+    //         'aadhar_back_image',
+    //         'pancard_image'
+    //     ])) {
+    //         handleNextButton($(this));
+    //         return;
+    //     }
+    // }
 });
 
 $('.prev-btn').on('click', function (e) {
@@ -83,7 +83,7 @@ $('.prev-btn').on('click', function (e) {
 
 $(".save-btn").on('click', function (e) {
     e.preventDefault();
-    if (validateInputs(['experiences', 'qualifications', 'spc', 'resume']) && activeDiv == 3) {
+    if (validateInputs(['experiences', 'qualifications', 'spc', 'resume']) && activeDiv == 2) {
         submitForm();
     } else {
         console.log('formError')
@@ -96,7 +96,7 @@ function handleNextButton(el) {
     activeDiv = el.attr('data-active');
     $('.done-' + activeDiv).addClass('done');
     activeDiv++;
-    if (activeDiv !== 3) {
+    if (activeDiv !== 2) {
         el.attr('data-active', activeDiv);
     } else {
         el.hide();
@@ -117,7 +117,7 @@ function handlePrevButton(el) {
     if (activeDiv == 1) {
         el.hide();
     }
-    if (activeDiv < 3) {
+    if (activeDiv < 2) {
         $('.save-btn').hide();
         $('.next-btn').show();
     }

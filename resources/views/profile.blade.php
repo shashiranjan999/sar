@@ -141,14 +141,14 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="mb-0">Aadhar Number</label>
-                                                <input type="text" class="form-control" value="{{ $teacherdetail->adhar_number }}" disabled>
+                                                <input type="text" class="form-control" value="{{$teacherdetail->adhar_number == 'undefined' ? 'Update your profile' : $teacherdetail->adhar_number }}" disabled>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="mb-0">Pan Number</label>
-                                                <input type="text" class="form-control" value="{{ $teacherdetail->pan_number }}" disabled>
+                                                <input type="text" class="form-control" value="{{$teacherdetail->pan_number == 'undefined' ? 'Update your profile' : $teacherdetail->pan_number }}" disabled>
                                             </div>
                                         </div>
                                     </div>

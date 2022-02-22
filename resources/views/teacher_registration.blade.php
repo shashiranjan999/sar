@@ -22,16 +22,16 @@
 <section class="bg-theme-2">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <p class="text-center pt-3"><span class="circle done-1">1</span> Personal Details</p>
             </div>
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <p class="text-center pt-3"><span class="circle done-2">2</span> Bank Account</p>
-            </div>
+            </div> --}}
 
-            <div class="col-md-4">
-                <p class="text-center pt-3"><span class="circle done-3">3</span> Professional details</p>
+            <div class="col-md-6">
+                <p class="text-center pt-3"><span class="circle done-3">2</span> Professional details</p>
             </div>
         </div>
     </div>
@@ -218,7 +218,7 @@
                             <!-- <small><i>Please ensure to upload image and pdf only & file size should be less then 500Kb.</i></small> -->
                         </div>
 
-                        <div class="step-2 teacher-steps">
+                        {{-- <div class="step-2 teacher-steps">
                             <div class="row my-3">
                                 <div class="col-md-3 my-3 col-12">
                                     <label class="form-label mb-0 mt-1">Bank Name</label>
@@ -267,7 +267,7 @@
                             </div>
 
 
-                            <!-- <div class="row">
+                            <div class="row">
                                 <div class="col-12 col-md-3 my-3">
                                     <label for="address" class="mb-0">Bank Account Picture</label>
                                     <input  type="file" class="form-control" id="bankaccount_image" name="bankaccountimage" accept="application/pdf, image/jpeg">
@@ -296,13 +296,12 @@
                                         Invalid File
                                     </div>
                                 </div>
-                            </div> -->
+                            </div> 
 
-                            <!-- <small><i>Please ensure to upload image and pdf only & file size should be less then 500Kb.</i></small> -->
+                            <small><i>Please ensure to upload image and pdf only & file size should be less then 500Kb.</i></small>
+                        </div> --}}
 
-                        </div>
-
-                        <div class="step-3 teacher-steps">
+                        <div class="step-2 teacher-steps">
                             <div class="row">
                                 <div class="col-5 align-self-center">
                                     <label class="form-label mb-0 mt-1">Experience</label>
