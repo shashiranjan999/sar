@@ -42,7 +42,7 @@
     <section class="py-5 pt-md-11 pb-md-12 bg-white-ice text-center">
         <div class="container">
             <div class="mb-md-8 mb-4">
-                <h1 class="mb-1">Why Study With Shiksha</h1>
+                <h1 class="mb-1">Why Study With SAR</h1>
                 <p class="font-size-lg mb-0 text-capitalize">Discover your perfect program in our courses.</p>
             </div>
 
@@ -138,7 +138,7 @@
 
                         <!-- Footer -->
                         <div class="card-footer px-0 pb-0 pt-4">
-                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and Shiksha is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
+                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and SAR is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
 
                         <!-- Footer -->
                         <div class="card-footer px-0 pb-0 pt-4">
-                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and Shiksha is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
+                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and SAR is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
                         </div>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
 
                         <!-- Footer -->
                         <div class="card-footer px-0 pb-0 pt-4">
-                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and Shiksha is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
+                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and SAR is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
 
                         <!-- Footer -->
                         <div class="card-footer px-0 pb-0 pt-4">
-                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and Shiksha is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
+                            <p class="mb-0 text-capitalize">“ I believe in lifelong learning and SAR is a great place to learn from experts. I've learned a lot and recommend it to all my friends “</p>
                         </div>
                     </div>
                 </div>
@@ -233,7 +233,7 @@
         </div>
     </section>
 
-   
+
 
     <!-- CALL ACTION
     ================================================== -->

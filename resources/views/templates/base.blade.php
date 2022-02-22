@@ -132,7 +132,7 @@
                 <!-- Signin -->
                 <div class="collapse show" id="collapseSignin" data-bs-parent="#accountModal">
                     <div class="modal-header">
-                        <h5 class="modal-title">Log In to Your Shiksha Account!</h5>
+                        <h5 class="modal-title">Log In to Your SAR Account!</h5>
                         <button type="button" class="close text-primary" data-bs-dismiss="modal" aria-label="Close">
                             <!-- Icon -->
                             <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
@@ -434,8 +434,15 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand" href="index.html">
-                <img src="{{asset('assets/img/logo.png')}}" class="navbar-brand-img" alt="...">Shiksha
+            <a class="navbar-brand align-items-center d-flex" href="/">
+                <img src="{{asset('assets/img/logo.png')}}" class="navbar-brand-img" alt="SAR Logo">
+                <div class="row d-inline-block text-center mx-0">
+                    <div class="col">
+                        <span class="text-uppercase mb-0 p-0" style="letter-spacing: 15px; margin-right: -12px">sar</span>
+                        <p class="mb-0 small text-uppercase" style="font-size: 10px"><small class="d-block mt-n2">Siksha Apke Dwar</small></p>
+                    </div>
+                </div>
+
             </a>
 
             <!-- Vertical Menu -->
@@ -921,7 +928,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <a href="mailto:support@Shiksha.com" class="text-white font-size-sm-alone">support@Shiksha.com</a>
+                        <a href="mailto:support@SAR.com" class="text-white font-size-sm-alone">support@SAR.com</a>
                     </div>
 
                     <!-- Social -->

@@ -32,7 +32,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('assets')}}/css/theme.min.css">
 
-    <title>Shiksha Home v3</title>
+    <title>SAR Home v3</title>
 
 </head>
 <body class="bg-white">
@@ -125,7 +125,7 @@
                 <!-- Signin -->
                 <div class="collapse show" id="collapseSignin" data-bs-parent="#accountModal">
                     <div class="modal-header">
-                        <h5 class="modal-title">Log In to Your Shiksha Account!</h5>
+                        <h5 class="modal-title">Log In to Your SAR Account!</h5>
                         <button type="button" class="close text-primary" data-bs-dismiss="modal" aria-label="Close">
                             <!-- Icon -->
                             <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
@@ -392,10 +392,10 @@
 
             <!-- Brand -->
             <a class="navbar-brand me-0" href="{{route('index')}}">
-                <img src="{{asset('assets')}}/img/logo.png" class="navbar-brand-img" alt="..."> Shiksha 
+                <img src="{{asset('assets')}}/img/logo.png" class="navbar-brand-img" alt="..."> SAR
             </a>
 
-            
+
 
             <!-- Search -->
             <form class="d-none d-wd-flex ms-5 w-xl-450p" >
@@ -536,7 +536,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <a href="mailto:support@Shiksha.com" class="text-white font-size-sm-alone">support@Shiksha.com</a>
+                        <a href="mailto:support@SAR.com" class="text-white font-size-sm-alone">support@SAR.com</a>
                     </div>
 
                     <!-- Social -->
