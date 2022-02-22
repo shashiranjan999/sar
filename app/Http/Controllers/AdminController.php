@@ -425,7 +425,6 @@ class AdminController extends Controller
     }
     public function updategallery(Request $request, $id){
        
-        
         $gallery = Gallery::find($id);
     
         if($request->has('image')){

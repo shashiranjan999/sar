@@ -147,7 +147,7 @@ class AuthController extends Controller
         $teacherdetail->address = $request->address;
         $teacherdetail->state = trim($city->label);
         $teacherdetail->district = trim($district->label);
-        $teacherdetail->city = trim($state->label);;
+        $teacherdetail->city = trim($state->label);
         $teacherdetail->avability_period = $request->avability_period;
         $teacherdetail->available_time = $request->available_time;
         $teacherdetail->bank_name = $request->bank_name;

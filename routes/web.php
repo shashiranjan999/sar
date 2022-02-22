@@ -26,6 +26,7 @@ Route::get('/linkstorage', function () {
 // })->name('index');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getprofile']);
 Route::get('/update-profile', [App\Http\Controllers\ProfileController::class, 'updateprofile']);
+Route::put('/update-profile', [App\Http\Controllers\ProfileController::class, 'update']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::put('/change-password', [App\Http\Controllers\AdminController::class, 'changeuserpass']);
