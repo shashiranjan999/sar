@@ -145,16 +145,16 @@ class AuthController extends Controller
         $teacherdetail->email = $request->email;
         $teacherdetail->alt_phone = $request->alt_phone;
         $teacherdetail->address = $request->address;
-        $teacherdetail->state = trim($city->label);
+        $teacherdetail->state = trim($state->label);
         $teacherdetail->district = trim($district->label);
-        $teacherdetail->city = trim($state->label);
+        $teacherdetail->city = trim($city->label);
         $teacherdetail->avability_period = $request->avability_period;
         $teacherdetail->available_time = $request->available_time;
-        $teacherdetail->bank_name = $request->bank_name;
-        $teacherdetail->bank_number = $request->bank_number;
-        $teacherdetail->ifsc = $request->bank_ifsc;
-        $teacherdetail->adhar_number = $request->aadhar_number;
-        $teacherdetail->pan_number = $request->pan_number;
+        // $teacherdetail->bank_name = $request->bank_name;
+        // $teacherdetail->bank_number = $request->bank_number;
+        // $teacherdetail->ifsc = $request->bank_ifsc;
+        // $teacherdetail->adhar_number = $request->aadhar_number;
+        // $teacherdetail->pan_number = $request->pan_number;
 
         // $profileimage = $request->file('profile_picture');
         // $profileimagename = 'profile_'.time() . '.' . $profileimage->getClientOriginalExtension();

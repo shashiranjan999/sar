@@ -28,6 +28,10 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getprofi
 Route::get('/update-profile', [App\Http\Controllers\ProfileController::class, 'updateprofile']);
 Route::put('/update-profile', [App\Http\Controllers\ProfileController::class, 'update']);
 
+Route::post('/update-personal-detail', [App\Http\Controllers\ProfileController::class, 'updatePersonalDetail']);
+Route::post('/update-bank-detail', [App\Http\Controllers\ProfileController::class, 'updateBankDetail']);
+Route::post('/update-professional-detail', [App\Http\Controllers\ProfileController::class, 'updateProfessionalDetail']);
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::put('/change-password', [App\Http\Controllers\AdminController::class, 'changeuserpass']);
 Route::get('/change-password', [App\Http\Controllers\AdminController::class, 'changepass']);

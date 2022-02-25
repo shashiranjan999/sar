@@ -52,12 +52,12 @@
                     <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="material-icons">person</i><span>Profile</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu2">
+                    @role('teacher')
                         <li>
                             <a href="{{url('profile')}}">My Profile</a>
                         </li>
-                        <li>
-                            <a href="{{url('update-profile')}}">Update Profile</a>
-                        </li>
+                        
+                        @endrole
                         <li>
                             <a href="{{url('change-password')}}">Change Password</a>
                         </li>
