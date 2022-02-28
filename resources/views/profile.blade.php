@@ -567,7 +567,7 @@
                                 <div class="col-md-3 align-self-center">
                                     <div class="dropdown w-100">
                                         <label class="form-label mb-0 mt-1">Class</label>
-                                        <select class="form-control" id="class" multiple>
+                                        <select name="classes[]" class="form-control" id="class" multiple>
                                             <option value="">Select Class</option>
                                             @foreach ($cls as $cl)
                                             <option selected value="{{$cl}}">{{$cl}}</option>
@@ -582,7 +582,7 @@
                                 <div class="col-md-3 align-self-center">
                                     <div class="dropdown w-100">
                                         <label class="form-label mb-0 mt-1">Subject</label>
-                                        <select class="form-control" id="subject" multiple>
+                                        <select name="subjects[]" class="form-control" id="subject" multiple>
                                             <option value="">Select Subject</option>
                                             @foreach ($sbj as $sb)
                                             <option selected value="{{$sb}}">{{$sb}}</option>

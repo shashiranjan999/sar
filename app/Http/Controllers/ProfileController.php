@@ -262,11 +262,17 @@ class ProfileController extends Controller
         return redirect('/profile');
     }
     public function updateQualificationDetail(Request $request){
-        return $request;
-        // return $request;
+    //   return $request;
         $id = Auth::id();
         $teacherdetail = Teacherdetail::where('user_id', $id)->first();
         $teacherqual = Teacherqualification::where('user_id', $id)->get();
+        $teacherspecialization = Teacherspecialization::select("*")
+            ->where("user_id", "=", $id)
+            ->get();
+        foreach($teacherspecialization as $specialization){
+            $specialization->delete();
+        }
+        // return redirect('/profile');
         $teacherquallen=count($teacherqual);
 
         for($i=0;$i<=$teacherquallen-1;$i++){
@@ -290,6 +296,49 @@ class ProfileController extends Controller
             }
             $teacherqual[$i]->save();
         }
+
+
+        $data = array(
+            "specializations" => 0,
+            "classes" => 0,
+            "subjects" => 0,
+        );
+        
+        $specail = $request->specailization;
+        $class = $request->classes;
+        $subject = $request->subjects;
+
+        $data['specializations'] = count($specail);
+        $data['classes'] = count($class);
+        $data['subjects'] = count($subject);
+        function getMax($array)
+        {
+            $max = 0;
+            foreach ($array as $k => $v) {
+                $max = max(array($max, $v));
+            }
+            return $max;
+        }
+
+        $maxrow = getMax($data);
+
+        for ($i = 0; $i < $maxrow; $i++) {
+            $teacherspecail = new Teacherspecialization();
+            $teacherspecail->user_id = $teacherdetail->user_id;
+            $teacherspecail->teacher_id = $teacherdetail->id;
+            if (array_key_exists($i, $specail)) {
+                $teacherspecail->specailizations = $specail[$i];
+            }
+            if (array_key_exists($i, $subject)) {
+                $teacherspecail->subjects = $subject[$i];
+            }
+            if (array_key_exists($i, $class)) {
+                $teacherspecail->classes = $class[$i];
+            }
+
+            $teacherspecail->save();
+        }
+        
         return redirect('/profile');
 
     }
