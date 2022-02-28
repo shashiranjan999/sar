@@ -19,6 +19,7 @@ use App\Http\Controllers\TestController;
 
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link'); // this will do the command line job
+    
 });
 //
 // Route::get('/', function () {
@@ -31,6 +32,7 @@ Route::put('/update-profile', [App\Http\Controllers\ProfileController::class, 'u
 Route::post('/update-personal-detail', [App\Http\Controllers\ProfileController::class, 'updatePersonalDetail']);
 Route::post('/update-bank-detail', [App\Http\Controllers\ProfileController::class, 'updateBankDetail']);
 Route::post('/update-professional-detail', [App\Http\Controllers\ProfileController::class, 'updateProfessionalDetail']);
+Route::post('/update-qualification-detail', [App\Http\Controllers\ProfileController::class, 'updateQualificationDetail']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::put('/change-password', [App\Http\Controllers\AdminController::class, 'changeuserpass']);

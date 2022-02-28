@@ -463,7 +463,6 @@
                         </div>
                         <div class="invalid-feedback" id="generic_error"></div>
 
-
                         <!-- Pre Next Submit -->
                         <div class="row d-flex justify-content-between my-5">
                             <button class="btn text-white bg-theme-2 btn-sm col-md-2 prev-btn" data-active="1">Prev</button>

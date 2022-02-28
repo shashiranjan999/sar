@@ -1,5 +1,8 @@
 @extends('layouts.dashboardlayout')
+@push('custom-css')
+<link rel="stylesheet" href="{{asset('assets')}}/libs/choices.js/public/assets/styles/choices.min.css">
 
+@endpush
 @section('content')
 @role('teacher')
 <div class="row ">
@@ -15,7 +18,10 @@
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bank Detail</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Professional Detail</a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Experience Detail</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profes-tab" data-toggle="tab" href="#profes" role="tab" aria-controls="profes" aria-selected="false">Professional Detail</a>
                     </li>
                 </ul>
                 <div class="tab-content mt-4" id="myTabContent">
@@ -432,10 +438,10 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                    @if ($teacherdetail->cv)
+                                        @if ($teacherdetail->cv)
                                         <a target="_blank" href="{{ url('/storage/gallery/teacher/cv/' . $teacherdetail->cv) }}">{{$teacherdetail->cv}}</a>
                                         @else
-                                        <span>No image Found</span>
+                                        <span>No Resume Found</span>
                                         @endif
                                     </div>
                                 </div>
@@ -464,24 +470,126 @@
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <form action="{{ url('update-professional-detail') }}" enctype="multipart/form-data" method="POST" class="form-horizontal" id="teacher_reg">
                             @csrf
-                            <div class="row">
-                                <div class="col-5 align-self-center">
-                                    <label class="form-label mb-0 mt-1">Experience</label>
-                                    <input class="form-control" name="experience" id="experience" type="text" placeholder="Enter something" />
-                                    <input class="form-control" name="experience" id="experience" type="text" placeholder="Enter something" />
+                            <div class="row" id="exp-fields">
+                               @foreach($teacherexperience as $experience)
+                                <div class="col-12 col-md-5">
+                                    <label class="form-label mb-0">Experiences</label>
+                                    <div class="input-group">
+                                      <input class="form-control mb-2" name="experience[]" value="{{$experience->experience_name}}" type="text"/>
+                                    </div>
+                                    <div class="invalid-feedback" id="first_name_error">
+                                    </div>
                                 </div>
-                                <div class="col-5 my-3 align-self-center">
-                                    <label class="form-label mb-0 mt-1">Years</label>
-                                    <input class="form-control" name="experience" id="experience" type="text" placeholder="Enter something" />
-                                    <input class="form-control" name="years" id="years" type="text" placeholder="Enter something" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                <div class="col-12 col-md-5">
+                                    <label class="form-label mb-0">years</label>
+                                    <div class="input-group">
+                                      <input class="form-control mb-2" name="years[]" value="{{$experience->experiences_year}}" type="text" maxlength="2"/>
+                                    </div>
+                                    <div class="invalid-feedback" id="first_name_error">
+                                    </div>
+                                </div>
+                                @endforeach
+                               
+                                
+
+                            </div>
+                            <div class="col-12 col-md-2 mb-5">
+                                    <label class="form-label mb-0 mt-1">&nbsp;</label>
+                                    <button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " onclick="add_exp_field()" type="button">+</button>
+                                </div>
+                            <button type="submit" class="btn text-white bg-theme-1 col-md-2 btn-sm bg-theme-1 save-btn">Update</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="profes" role="tabpanel" aria-labelledby="profes-tab">
+                        <form action="{{ url('update-qualification-detail') }}" enctype="multipart/form-data" method="POST" class="form-horizontal" id="teacher_reg">
+                            @csrf
+                            <div class="my-5">
+                              @foreach ($teacherqualification as $qual)
+                                <div class="row my-3 py-0">
+                                    <div class="col-md-2 align-self-center">
+                                        <label class="form-label mb-0 mt-1">Qualification</label>
+                                        <select class="form-control" id="qualification" name=qualification[]>
+                                        <option hidden selected value="{{ $qual->qualification_name }}">{{ $qual->qualification_name }}</option>
+                                            @foreach ($qualifications as $qualification)
+                                            <option value="{{ $qualification->qualifications }}">
+                                                {{ $qualification->qualifications }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <!-- <input class="form-control" id="choices-skills" type="text" name="course" value="vuejs, angular, react" placeholder="Enter something" /> -->
+                                    <div class="col-md-2 align-self-center">
+                                        <label class="form-label mb-0 mt-1">Year</label>
+                                        <input class="form-control" name="qualification_year[]" id="qualification_year" type="text" placeholder="Year" maxlength="4" value="{{ $qual->qualification_year }}"/>
+                                    </div>
+                                    <div class="col-md-2 align-self-center">
+                                        <label class="form-label mb-0 mt-1">Total Marks</label>
+                                        <input class="form-control" name="total_marks[]" id="total_marks" type="text" placeholder="Total Marks" maxlength="3" value="{{ $qual->total_marks }}" />
+                                    </div>
+                                    <div class="col-md-2 align-self-center">
+                                        <label class="form-label mb-0 mt-1">Marks Obtained</label>
+                                        <input class="form-control" name="marks_obtained[]" id="marks_obtained" type="text" placeholder="Marks" maxlength="3" value="{{ $qual->marks_obtained }}" />
+                                    </div>
+                                    <div class="col-md-1 align-self-center">
+                                        <label class="form-label mb-0 mt-1">Rank</label>
+                                        <input class="form-control" name="rank[]" id="rank" type="text" placeholder="Rank" maxlength="3" value="{{ $qual->Rank }}" />
+                                    </div>
+                                    <div class="col-md-2 align-self-center">
+                                        <label class="form-label mb-0 mt-1">Remarks</label>
+                                        <input class="form-control" name="remarks[]" id="remarks" type="text" placeholder="Remarks" value="{{ $qual->Remarks }}" />
+                                    </div>
+            
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="row my-3">
+                                <div class="col-md-3 align-self-center">
+                                    <div class="dropdown w-100">
+                                        <label class="form-label mb-0 mt-1">Specailization</label>
+                                        <select class="form-control" id="specailization" multiple>
+                                            <option value="">Select Specailization</option>
+                                            @foreach ($specializations as $specialization)
+                                            <option value="{{ $specialization->id }}">
+                                                {{ $specialization->specializations }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-2 my-3">
-                                    <label class="form-label mb-0 mt-1">&nbsp;</label>
-                                    <button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " onclick="add_experience()" type="button">+</button>
+                                <div class="col-md-3 align-self-center">
+                                    <div class="dropdown w-100">
+                                        <label class="form-label mb-0 mt-1">Class</label>
+                                        <select class="form-control" id="class" multiple>
+                                            <option value="">Select Class</option>
+                                            @foreach ($classes as $class)
+                                            <option value="{{ $class->id }}"> {{ $class->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                   
                                 </div>
+
+                                <div class="col-md-3 align-self-center">
+                                    <div class="dropdown w-100">
+                                        <label class="form-label mb-0 mt-1">Subject</label>
+                                        <select class="form-control" id="subject" multiple>
+                                            <option value="">Select Subject</option>
+                                            @foreach ($subjects as $subject)
+                                            <option value="{{ $subject->id }}">{{ $subject->name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                   
+                                </div>
+
                             </div>
-                            
+
+                            <!-- <div class="col-1 my-3">
+                                        <label class="form-label mb-0 mt-1">&nbsp;</label>
+                                        <button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " onclick="add_qualification()" type="button">+</button>
+                                    </div> -->
                             <button type="submit" class="btn text-white bg-theme-1 col-md-2 btn-sm bg-theme-1 save-btn">Update</button>
                         </form>
                     </div>
@@ -547,5 +655,57 @@
         });
 
     });
+
+function add_exp_field(){
+    var html='';
+        html += '<div class="row" id="exp-fields">';
+        html += '<div class="col-12 col-md-5">';
+        html += '<label class="form-label mb-0">Experiences</label>';
+        html += '<div class="input-group">';
+        html += '<input class="form-control mb-2" name="experience[]" type="text"/>';
+        html += '</div>';
+        html += '<div class="invalid-feedback" id="first_name_error">';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="col-12 col-md-5">';
+        html += '<label class="form-label mb-0">years</label>';
+        html += '<div class="input-group">';
+        html += '<input class="form-control mb-2" name="years[]" type="text" maxlength="2"/>';
+        html += '</div>';
+        html += '<div class="invalid-feedback" id="first_name_error">';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="col-md-2">';
+        html += '<label class="form-label mb-0 mt-1">&nbsp;</label>';
+        html += '<button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " id="removeRow" onclick="remove()" type="button">Remove</button>';
+        html += '</div>';
+        html += '</div>';
+    $("#exp-fields").append(html)
+    
+}
+$(document).on('click', '#removeRow', function () {
+    $(this).closest('#exp-fields').remove();
+        console.log("test")
+    });
 </script>
+<script src="{{ asset('admin') }}/js/plugins/choices.min.js"></script>
+<script>
+// let state_element = document.querySelector('#state');
+// let district_element = document.querySelector('#districts');
+// let cities = document.querySelector('#cities');
+
+let classes = document.querySelector('#class');
+let subject = document.querySelector('#subject');
+let specailization = document.querySelector('#specailization');
+
+// let qualification = document.querySelector('#qualification');
+// let state_choice = new Choices(state_element);
+// let district_choice = new Choices(district_element);
+// let city_choice = new Choices(cities);
+// let qualification_choice = new Choices(qualification);
+let classes_choice = new Choices(classes, {removeItemButton: true});
+let subject_choice = new Choices(subject, {removeItemButton: true});
+let specailization_choice = new Choices(specailization, {removeItemButton: true});
+</script>
+
 @endpush
