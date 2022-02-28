@@ -36,6 +36,20 @@ class ProfileController extends Controller
         $teacherspecialization = Teacherspecialization::select("*")
             ->where("teacher_id", "=", $teacher_id)
             ->get();
+            $spz=[];
+            $cls=[];
+            $sbj=[];
+            foreach($teacherspecialization as $specail){
+                if($specail->specailizations!=null){
+                    array_push($spz,$specail->specailizations);
+                }
+                if($specail->subjects!=null){
+                    array_push($sbj,$specail->subjects);
+                }
+                if($specail->classes!=null){
+                    array_push($cls,$specail->classes);
+                }
+            }
         $teacherqualification = Teacherqualification::select("*")
             ->where("teacher_id", "=", $teacher_id)
             ->get();
@@ -61,7 +75,7 @@ class ProfileController extends Controller
             ->orderBy('position', 'asc')
             ->get();
             // return $teacherexperience;
-        return view('profile', compact('states','classes', 'subjects', 'qualifications', 'specializations', 'teacherdetail', 'teacherexperience', 'teacherspecialization', 'teacherqualification'));
+        return view('profile', compact('spz','cls','sbj','states','classes', 'subjects', 'qualifications', 'specializations', 'teacherdetail', 'teacherexperience', 'teacherspecialization', 'teacherqualification'));
     }
     public function updateprofile()
     {
@@ -248,6 +262,7 @@ class ProfileController extends Controller
         return redirect('/profile');
     }
     public function updateQualificationDetail(Request $request){
+        return $request;
         // return $request;
         $id = Auth::id();
         $teacherdetail = Teacherdetail::where('user_id', $id)->first();

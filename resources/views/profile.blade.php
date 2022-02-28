@@ -503,7 +503,7 @@
                     <div class="tab-pane fade" id="profes" role="tabpanel" aria-labelledby="profes-tab">
                         <form action="{{ url('update-qualification-detail') }}" enctype="multipart/form-data" method="POST" class="form-horizontal" id="teacher_reg">
                             @csrf
-                            <div class="my-5">
+                            <div class="my-5" id="qual-fields">
                               @foreach ($teacherqualification as $qual)
                                 <div class="row my-3 py-0">
                                     <div class="col-md-2 align-self-center">
@@ -538,18 +538,25 @@
                                         <label class="form-label mb-0 mt-1">Remarks</label>
                                         <input class="form-control" name="remarks[]" id="remarks" type="text" placeholder="Remarks" value="{{ $qual->Remarks }}" />
                                     </div>
-            
                                 </div>
                                 @endforeach
+                        
                             </div>
+                              <!-- <div class="col-1 my-3">
+                                        <label class="form-label mb-0 mt-1">&nbsp;</label>
+                                        <button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " onclick="add_qualification()" type="button">+</button>
+                                    </div> -->
                             <div class="row my-3">
                                 <div class="col-md-3 align-self-center">
                                     <div class="dropdown w-100">
                                         <label class="form-label mb-0 mt-1">Specailization</label>
-                                        <select class="form-control" id="specailization" multiple>
+                                        <select name="specailization[]" class="form-control" id="specailization" multiple>
                                             <option value="">Select Specailization</option>
+                                            @foreach ($spz as $sp)
+                                            <option selected value="{{$sp}}">{{$sp}}</option>
+                                            @endforeach
                                             @foreach ($specializations as $specialization)
-                                            <option value="{{ $specialization->id }}">
+                                            <option value="{{ $specialization->specializations }}">
                                                 {{ $specialization->specializations }}
                                             </option>
                                             @endforeach
@@ -562,12 +569,14 @@
                                         <label class="form-label mb-0 mt-1">Class</label>
                                         <select class="form-control" id="class" multiple>
                                             <option value="">Select Class</option>
+                                            @foreach ($cls as $cl)
+                                            <option selected value="{{$cl}}">{{$cl}}</option>
+                                            @endforeach
                                             @foreach ($classes as $class)
-                                            <option value="{{ $class->id }}"> {{ $class->name }}</option>
+                                              <option value="{{ $class->name }}"> {{ $class->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                   
                                 </div>
 
                                 <div class="col-md-3 align-self-center">
@@ -575,21 +584,20 @@
                                         <label class="form-label mb-0 mt-1">Subject</label>
                                         <select class="form-control" id="subject" multiple>
                                             <option value="">Select Subject</option>
+                                            @foreach ($sbj as $sb)
+                                            <option selected value="{{$sb}}">{{$sb}}</option>
+                                            @endforeach
                                             @foreach ($subjects as $subject)
-                                            <option value="{{ $subject->id }}">{{ $subject->name }}
+                                            <option value="{{ $subject->name }}">{{ $subject->name }}
                                             </option>
                                             @endforeach
                                         </select>
                                     </div>
-                                   
                                 </div>
 
                             </div>
 
-                            <!-- <div class="col-1 my-3">
-                                        <label class="form-label mb-0 mt-1">&nbsp;</label>
-                                        <button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " onclick="add_qualification()" type="button">+</button>
-                                    </div> -->
+                          
                             <button type="submit" class="btn text-white bg-theme-1 col-md-2 btn-sm bg-theme-1 save-btn">Update</button>
                         </form>
                     </div>
@@ -605,6 +613,8 @@
 @push('custom_scripts')
 <script>
     $(document).ready(function() {
+        
+
 
         $("#state").change(function() {
             var state_id = $(this).val();
@@ -685,8 +695,46 @@ function add_exp_field(){
 }
 $(document).on('click', '#removeRow', function () {
     $(this).closest('#exp-fields').remove();
-        console.log("test")
     });
+
+
+function add_qualification(){
+    var html='';
+        html += '<div class="row py-0" id="qual-fields">';
+        html += '<div class="col-md-2 align-self-center">';
+        html += '<label class="form-label mb-0 mt-1">Qualification</label>';
+        html += '<select class="form-control" id="qualification" name=qualification[]>';
+        html += '<option hidden selected>Select Qualifications</option>';
+        html += ' </select>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        // html += '<div class="col-12 col-md-5">';
+        // html += '<label class="form-label mb-0">years</label>';
+        // html += '<div class="input-group">';
+        // html += '<input class="form-control mb-2" name="years[]" type="text" maxlength="2"/>';
+        // html += '</div>';
+        // html += '<div class="invalid-feedback" id="first_name_error">';
+        // html += '</div>';
+        // html += '</div>';
+        // html += '<div class="col-md-2">';
+        // html += '<label class="form-label mb-0 mt-1">&nbsp;</label>';
+        // html += '<button class="form-control btn btn-md btn-primary bg-theme-1 px-1 " id="removeRow" onclick="remove()" type="button">Remove</button>';
+        // html += '</div>';
+        // html += '</div>';
+    $("#qual-fields").append(html)
+}
+var qual = {!! json_encode($qualifications) !!};
+console.log(qual)
+function myFunction(selector)
+{
+    var i;
+    for (i=0;i<=qual.length-1;i++){
+      selector.append('<option value="1">1 </option>')
+    }
+}
+//usage:
+
 </script>
 <script src="{{ asset('admin') }}/js/plugins/choices.min.js"></script>
 <script>
@@ -705,7 +753,7 @@ let specailization = document.querySelector('#specailization');
 // let qualification_choice = new Choices(qualification);
 let classes_choice = new Choices(classes, {removeItemButton: true});
 let subject_choice = new Choices(subject, {removeItemButton: true});
-let specailization_choice = new Choices(specailization, {removeItemButton: true});
+let specailization_choice = new Choices(specailization, {removeItemButton: true})
 </script>
 
 @endpush
