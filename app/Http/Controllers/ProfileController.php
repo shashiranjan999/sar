@@ -335,7 +335,6 @@ class ProfileController extends Controller
             if (array_key_exists($i, $class)) {
                 $teacherspecail->classes = $class[$i];
             }
-
             $teacherspecail->save();
         }
         
