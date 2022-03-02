@@ -557,7 +557,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="dropdown w-100">
                                         <label class="form-label mb-0 mt-1">Specailization</label>
-                                        <select name="specailization[]" class="form-control" id="specailization" multiple>
+                                        <select name="specailization[]" class="form-control multiSelect" id="specailization" multiple>
                                             <option value="">Select Specailization</option>
                                             @foreach ($spz as $sp)
                                             <option selected value="{{$sp}}">{{$sp}}</option>
@@ -574,7 +574,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="dropdown w-100">
                                         <label class="form-label mb-0 mt-1">Class</label>
-                                        <select name="classes[]" class="form-control" id="class" multiple>
+                                        <select name="classes[]" class="form-control multiSelect" id="class" multiple>
                                             <option value="">Select Class</option>
                                             @foreach ($cls as $cl)
                                             <option selected value="{{$cl}}">{{$cl}}</option>
@@ -589,7 +589,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="dropdown w-100">
                                         <label class="form-label mb-0 mt-1">Subject</label>
-                                        <select name="subjects[]" class="form-control" id="subject" multiple>
+                                        <select name="subjects[]" class="form-control multiSelect" id="subject" multiple>
                                             <option value="">Select Subject</option>
                                             @foreach ($sbj as $sb)
                                             <option selected value="{{$sb}}">{{$sb}}</option>
@@ -605,7 +605,7 @@
                             </div>
 
 
-                            <button type="submit" class="btn text-white bg-theme-1 col-md-2 btn-sm bg-theme-1 save-btn save-btn-professtional" disabled>Update</button>
+                            <button type="submit" class="btn text-white bg-theme-1 col-md-2 btn-sm bg-theme-1 save-btn save-btn-professional" disabled>Update</button>
                         </form>
                     </div>
                 </div>
@@ -621,18 +621,60 @@
 <script>
     $(document).ready(function() {
 
-        $('.required-input').on('input, change, keyup', function(){
+        var multi = false;
+        $('.multiSelect').on('change', function(){
             var count = $('.required-input').length;
             var done = 0;
+            var totalMulti = $('.multiSelect').length;
+            var totalFilled = 0;
+            $('.multiSelect').each(function(i,j){
+                if(j.value != ""){
+                    totalFilled = totalFilled + 1;
+                }
+            });
+            if(totalFilled == totalMulti){
+                multi = true;
+            }else{
+                multi = false;
+            }
+
             $('.required-input').each(function(i,j){
                 if(j.value !== ""){
                     done = done + 1;
                 }
             });
-            if(count == done){
-                $('.save-btn-professtional').attr('disabled', false);
+            if((count == done) && (multi)){
+                $('.save-btn-professional').attr('disabled', false);
             }else{
-                $('.save-btn-professtional').attr('disabled', true);
+                $('.save-btn-professional').attr('disabled', true);
+            }
+        });
+
+        $('.required-input').on('input, change, keyup', function(){
+            var count = $('.required-input').length;
+            var done = 0;
+            var totalMulti = $('.multiSelect').length;
+            var totalFilled = 0;
+            $('.multiSelect').each(function(i,j){
+                if(j.value != ""){
+                    totalFilled = totalFilled + 1;
+                }
+            });
+            if(totalFilled == totalMulti){
+                multi = true;
+            }else{
+                multi = false;
+            }
+
+            $('.required-input').each(function(i,j){
+                if(j.value !== ""){
+                    done = done + 1;
+                }
+            });
+            if((count == done) && (multi)){
+                $('.save-btn-professional').attr('disabled', false);
+            }else{
+                $('.save-btn-professional').attr('disabled', true);
             }
         });
 
@@ -778,7 +820,7 @@ function add_qualification(){
     $("#qual-fields").append(html)
 }
 var qual = {!! json_encode($qualifications) !!};
-console.log(qual)
+// console.log(qual)
 function myFunction(selector)
 {
     var i;
